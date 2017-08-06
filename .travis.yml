@@ -1,0 +1,34 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+- 6.9.5
+addons:
+apt:
+  sources:
+  - google-chrome
+  packages:
+  - google-chrome-stable
+  - google-chrome-beta
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_script:
+- npm install -g @angular/cli
+- npm install -g karma
+- npm install
+- ng build
+script: karma start karma.conf.js --single-run
+
+deploy:
+  provider: s3
+  skip_cleanup: true
+  access_key_id: AKIAJBNZWUTYNE5S4BOA
+  secret_access_key:
+    secure: hFJn4iYuGg+9rKXuxSItXnyp1e/sOYDaeXXZ28R+p9Y1tv/1vmhAgKxEtEwkWVZIu4e4qPGZxgBF6CluIdnzWue66EEpMOcjkJowdRM20XD0L7g7+DPpHkYHLChKq3EYgDor8JryWPSxvE+zZbjI544Y8Rv3+wlj9bFaw9RoaXrAXQKAOg7mU+rBFGLNdKTn+zR79ZvbLrKUZhU9qIll6ru30YIp5VrswMg6nuPBrapMC8nJIRwkZQJGfirNWSLyYBJErscyVkVuQeJe3tCAwAIJmyjKhfMabJVGBjPxidjSskdB6/eCnU3zvmHjHrWOlATmucoqjmrNKjPDFlt5dd1nxybmgdp4ooS/6WKRrOnrOJocZJaNMX4AdlE90fu7K0Cg6Zxk4XbL0YGlXAeluMViDXzcqWSf5ZZTadRfamvBcqH8wao7y6DsS4wD+xmVLTic0j0Ii2gPkVTOpY8ZKBpifbFy0kKoP0wn4iEs43Bmdmc796bGplazn+BAx+iyO6hG17HoKGyIWMe95gz7j6NePfWfAynTNEOyGpmN2x3FdUTLgO4CbrCSl/E90hs00cuEjty8fSwhKw+nl8RVN3ap8kC5Wfi8k/pMSWQaUHedP4OnkBu6F6vaOPIGLrCN/3qlwbljRCmMt57IAAYqOb7rsLQvQxp7QIhiruv46MQ=
+  bucket: aws-website-amitkumar-iobhb
+  local-dir: dist
+  acl: public_read
+  on:
+    repo: amitrke/courtres-ng
