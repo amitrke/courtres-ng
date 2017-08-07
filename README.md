@@ -1,6 +1,8 @@
 # CourtresNg
 
 [![Build Status](https://travis-ci.org/amitrke/courtres-ng.svg?branch=master)](https://travis-ci.org/amitrke/courtres-ng)
+[![Build Status](https://david-dm.org/amitrke/courtres-ng.svg?branch=master)](https://david-dm.org/amitrke/courtres-ng)
+[![devDependencies Status](https://david-dm.org/amitrke/courtres-ng/dev-status.svg)](https://david-dm.org/amitrke/courtres-ng?type=dev)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
 
