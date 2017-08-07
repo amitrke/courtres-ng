@@ -34,5 +34,7 @@ deploy:
   access_key_id: AKIAID3OLT4CEU2LVPJQ
   secret_access_key: *1
   bucket: aws-website-amitkumar-iobhb
+  key: ''
+  dest: '/'
   application: courtres-ng
   on: *2
