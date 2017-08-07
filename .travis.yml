@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 node_js:
 - 6.9.5
-addons:
+addons: 
 apt:
   sources:
   - google-chrome
@@ -20,15 +20,20 @@ before_script:
 - npm install
 - ng build
 script: karma start karma.conf.js --single-run
-
 deploy:
-  provider: s3
+- provider: s3
+  access_key_id: AKIAID3OLT4CEU2LVPJQ
+  secret_access_key: &1
+    secure: nAyi2B8YeEbjj+1DmGor5+Ag9FnQVDwtLsm4qkcCt3ljf50MlSkwTfASVeygKvrw/B2nsXG8lXncby5ZgSqzg0eH09wm3YlvrmcbfTjR8B81xTEa5LxjWs1SINoMwfueDmYB89VyYf1pNRogrNClzeo3TuLII8gfG/kiSPOfCDo5+VR/wRDiKLN8mvRuPltNjXjBnh5S5Gye0j0Spz91CtZbqxJbmJDzi4IbEOMUeooILp0puZlrG+p9ulYv5umqnSAFPDFmr6iOkx7Qa8pejqqvOC0ME7pIW1CqVyU7dE0us01W3MhT7f0NNvkvI5RdW8HEP9vYz8eYbWy16aoBAgf9k+TVEmMCRdWWGLEobDgA5g3BzRtxXTLehBZ6XIy5GNP0qqu7xdhgSDT6ygJjDEH8/ye4zCS0ksG/6pJqfqonc6SnhQnRak5Os3xsZP3r74OqlULRKGkVc7PcMaNG8x5DcWslvGQZp5cOAAqh7PyQSrf5hTEbjEMkTytLvHaFE92fAqbsVDgbTP9CH0TpWVV9hfuXjWtNTdo+LpvTK4lkrA6ZjcWwoN67pfdRHZpBwv0e31duLDpu585vZw9iphK8HT2uyw0ADFF/iONC31JQASq/N2Tjo8/npeTnMK1/FpP+y6zR9ZRoA381UYNLAJeI+z8rgnSLxJxY9KXV+BY=
+  local_dir: dist
   skip_cleanup: true
-  access_key_id: AKIAJBNZWUTYNE5S4BOA
-  secret_access_key:
-    secure: hFJn4iYuGg+9rKXuxSItXnyp1e/sOYDaeXXZ28R+p9Y1tv/1vmhAgKxEtEwkWVZIu4e4qPGZxgBF6CluIdnzWue66EEpMOcjkJowdRM20XD0L7g7+DPpHkYHLChKq3EYgDor8JryWPSxvE+zZbjI544Y8Rv3+wlj9bFaw9RoaXrAXQKAOg7mU+rBFGLNdKTn+zR79ZvbLrKUZhU9qIll6ru30YIp5VrswMg6nuPBrapMC8nJIRwkZQJGfirNWSLyYBJErscyVkVuQeJe3tCAwAIJmyjKhfMabJVGBjPxidjSskdB6/eCnU3zvmHjHrWOlATmucoqjmrNKjPDFlt5dd1nxybmgdp4ooS/6WKRrOnrOJocZJaNMX4AdlE90fu7K0Cg6Zxk4XbL0YGlXAeluMViDXzcqWSf5ZZTadRfamvBcqH8wao7y6DsS4wD+xmVLTic0j0Ii2gPkVTOpY8ZKBpifbFy0kKoP0wn4iEs43Bmdmc796bGplazn+BAx+iyO6hG17HoKGyIWMe95gz7j6NePfWfAynTNEOyGpmN2x3FdUTLgO4CbrCSl/E90hs00cuEjty8fSwhKw+nl8RVN3ap8kC5Wfi8k/pMSWQaUHedP4OnkBu6F6vaOPIGLrCN/3qlwbljRCmMt57IAAYqOb7rsLQvQxp7QIhiruv46MQ=
-  bucket: aws-website-amitkumar-iobhb
-  local-dir: dist
-  acl: public_read
-  on:
+  on: &2
     repo: amitrke/courtres-ng
+  bucket: aws-website-amitkumar-iobhb
+- provider: codedeploy
+  access_key_id: AKIAID3OLT4CEU2LVPJQ
+  secret_access_key: *1
+  bucket: aws-website-amitkumar-iobhb
+  application: courtres-ng
+  deployment_group: ''
+  on: *2
