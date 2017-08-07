@@ -35,5 +35,4 @@ deploy:
   secret_access_key: *1
   bucket: aws-website-amitkumar-iobhb
   application: courtres-ng
-  deployment_group: ''
   on: *2
