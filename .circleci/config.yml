@@ -8,6 +8,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
+      env:
+        - DISPLAY=:99
+        - CHROME_BIN=/usr/bin/google-chrome
     
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -20,22 +23,31 @@ jobs:
       - run:
           name: Install Chrome Dependencies
           command: sudo apt-get install lsb-release libxss1 libappindicator1 libindicator7 libgconf2-4 libnss3-1d libasound2 libgtk-3-0 libxtst6 fonts-liberation xdg-utils
+      
       - run:
           name: Download Chrome
           command: |
             mkdir -p chrome-archive
             wget -qnc https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O chrome-archive/google-chrome-stable_current_amd64.deb
+      
       - run:
           name: Install Chrome
           command: |
             sudo dpkg -i chrome-archive/google-chrome*.deb # Might show "errors", fixed by next line
             sudo apt-get install -f
+            
       - run:
           name: Print Chrome Version
           command: google-chrome --version
+          
       - run:
           name: Cleanup
           command: rm -rf *
+          
+      - type: shell
+          name: Starting Xvfb (for Browser Tests)
+          command: Xvfb :99 -screen 0 1280x1024x24
+          background: true
           
       - checkout
 
