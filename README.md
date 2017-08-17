@@ -5,6 +5,7 @@
 [![devDependencies Status](https://david-dm.org/amitrke/courtres-ng/dev-status.svg)](https://david-dm.org/amitrke/courtres-ng?type=dev)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
+[AWS hosted URL](http://aws-website-amitkumar-iobhb.s3-website-us-east-1.amazonaws.com/)
 
 ## Development server
 
