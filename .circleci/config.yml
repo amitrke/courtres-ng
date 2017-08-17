@@ -44,7 +44,7 @@ jobs:
           name: Cleanup
           command: rm -rf *
           
-      - run: shell
+      - run:
           name: Starting Xvfb (for Browser Tests)
           command: Xvfb :99 -screen 0 1280x1024x24
           background: true
