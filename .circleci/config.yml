@@ -19,7 +19,7 @@ jobs:
     steps:
       - run:
           name: Install Chrome Dependencies
-          command: sudo apt-get install lsb-release libxss1 libappindicator1 libindicator7
+          command: sudo apt-get install lsb-release libxss1 libappindicator1 libindicator7 libgconf2-4 libnss3-1d
       - run:
           name: Download Chrome
           command: |
