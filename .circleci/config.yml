@@ -5,14 +5,6 @@
 version: 2
 jobs:
   build:
-    dependencies:
-        pre:
-          - google-chrome --version
-          - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub47 | sudo apt-key add -
-          - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/23 stable main" >> /etc/apt/sources.list.d/google.list'
-          - sudo apt-get update
-          - sudo apt-get --only-upgrade install google-chrome-stable
-          - google-chrome --version
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -25,6 +17,23 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - run:
+          name: Install Chrome Dependencies
+          command: sudo apt-get install lsb-release libxss1 libappindicator1 libindicator7
+      - run:
+          name: Download Chrome
+          command: |
+            mkdir -p chrome-archive
+            wget -qnc https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O chrome-archive/google-chrome-stable_current_amd64.deb
+      - run:
+          name: Install Chrome
+          command: |
+            sudo dpkg -i chrome-archive/google-chrome*.deb # Might show "errors", fixed by next line
+            sudo apt-get install -f
+      - run:
+          name: Print Chrome Version
+          command: google-chrome --version
+
       - checkout
 
       # Download and cache dependencies
