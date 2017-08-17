@@ -5,10 +5,7 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-      dependencies:
+    dependencies:
         pre:
           - google-chrome --version
           - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub47 | sudo apt-key add -
@@ -16,6 +13,10 @@ jobs:
           - sudo apt-get update
           - sudo apt-get --only-upgrade install google-chrome-stable
           - google-chrome --version
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+    
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
