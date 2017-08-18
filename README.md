@@ -1,6 +1,6 @@
 # CourtresNg
 
-[![Build Status](https://travis-ci.org/amitrke/courtres-ng.svg?branch=master)](https://travis-ci.org/amitrke/courtres-ng)
+[![CircleCI](https://circleci.com/gh/amitrke/courtres-ng.svg?style=svg)](https://circleci.com/gh/amitrke/courtres-ng)
 [![Build Status](https://david-dm.org/amitrke/courtres-ng.svg?branch=master)](https://david-dm.org/amitrke/courtres-ng)
 [![devDependencies Status](https://david-dm.org/amitrke/courtres-ng/dev-status.svg)](https://david-dm.org/amitrke/courtres-ng?type=dev)
 
