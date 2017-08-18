@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: 7-browsers
+      - image: circleci/node:7-browsers
         env:
           - DISPLAY=:99
           - CHROME_BIN=/usr/bin/google-chrome
@@ -20,7 +20,7 @@ jobs:
     working_directory: ~/repo
 
     steps:
-    
+
       - checkout
 
       # Download and cache dependencies
