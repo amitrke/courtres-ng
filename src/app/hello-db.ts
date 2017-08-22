@@ -1,6 +1,6 @@
-export class HelloDb{
+export class HelloDb {
     item: DbDes;
 }
-export class DbDes{
+export class DbDes {
     description: String;
 }

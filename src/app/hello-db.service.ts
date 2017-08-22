@@ -14,7 +14,6 @@ export class HelloDBService {
     return this.http.get(this.dataUrl)
                .toPromise()
                .then(function (response:Response){
-                  console.dir(response.json());
                   return response.json();
                })
                .catch(this.handleError);

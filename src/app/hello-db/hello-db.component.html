@@ -1,4 +1,6 @@
-<p>
+
   hello-db works!
-  {{data.Item.description}}
-</p>
+  <div *ngIf="userObservable | async as data; else loading">
+    {{data.Item.description}}
+  </div>
+  <ng-template #loading let-user>Waiting... (data is {{data|json}})</ng-template>
