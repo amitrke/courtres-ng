@@ -1,6 +1,10 @@
 export class HelloDb {
-    item: DbDes;
+    constructor(
+        public item: DbDes
+    ) {}
 }
 export class DbDes {
-    description: String;
+    constructor(
+        public description: String
+    ) {}
 }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {HelloDBService} from '../hello-db.service';
+import { HelloDBService } from '../hello-db.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import {HelloDb} from '../hello-db';
+import { HelloDb, DbDes } from '../hello-db';
 
 // Observable operators
-import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-hello-db',
@@ -12,21 +12,14 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./hello-db.component.css']
 })
 export class HelloDBComponent implements OnInit {
-  data: HelloDb;
+  public dataObservable: Observable<HelloDb>;
 
   constructor(
-    private service:HelloDBService,
+    private service: HelloDBService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-
-    //this.service.getData().then(d => this.data = d);
-
-    
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.service.getData())
-      .subscribe(data => this.data = data);
-      
+    this.dataObservable = this.service.getData();
   }
 }
