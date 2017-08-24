@@ -1,6 +1,6 @@
 export class HelloDb {
     constructor(
-        public item: DbDes
+        public Item: DbDes
     ) {}
 }
 export class DbDes {
