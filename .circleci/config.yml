@@ -40,6 +40,8 @@ jobs:
       - run: yarn build
       # run tests!
       - run: yarn test
+      - store_artifacts:
+          path: coverage
 
       - run:
           name: Install dependencies
