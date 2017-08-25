@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test --watch=false --code-coverage && ./node_modules/.bin/codecov -f coverage/*.json -t 02afbfa5-18d9-44a8-b617-62db006e222b",
+    "test": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
