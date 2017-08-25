@@ -40,8 +40,13 @@ jobs:
       - run: yarn build
       # run tests!
       - run: yarn test
+      
       - store_artifacts:
           path: coverage
+          
+      - run: 
+          name: codecov report upload
+          command: ~/repo/node_modules/.bin/codecov -f ~/repo/coverage/* -t 02afbfa5-18d9-44a8-b617-62db006e222b
 
       - run:
           name: Install dependencies
