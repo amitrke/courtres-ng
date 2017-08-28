@@ -163,6 +163,16 @@
     magic-string "^0.22.3"
     source-map "^0.5.6"
 
+"@types/gapi.auth2@^0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/gapi.auth2/-/gapi.auth2-0.0.31.tgz#3f917f99c1f18e0bf4e478214d8304ffad1c5def"
+  dependencies:
+    "@types/gapi" "*"
+
+"@types/gapi@*":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@types/gapi/-/gapi-0.0.35.tgz#8e0d672d66d8c6ce8493f5e8e550344f7ff500dc"
+
 "@types/jasmine@*", "@types/jasmine@~2.5.53":
   version "2.5.53"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.53.tgz#4e0cefad09df5ec48c8dd40433512f84b1568d61"
@@ -268,6 +278,12 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
+angular-google-signin@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/angular-google-signin/-/angular-google-signin-0.1.5.tgz#5506cc59e4c245620eb090e83869c7f4ca17513c"
+  dependencies:
+    "@types/gapi.auth2" "^0.0.31"
 
 ansi-escapes@^2.0.0:
   version "2.0.0"

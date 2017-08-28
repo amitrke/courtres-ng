@@ -4,4 +4,13 @@
     Welcome to {{title}}!
   </h1>
   <app-hello-db></app-hello-db>
+
+    <google-signin
+      [clientId]="myClientId"
+      [width]="myWidth"
+      [theme]="myTheme"
+      [scope]="myScope"
+      [longTitle]="myLongTitle"
+      (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+    </google-signin>
 </div>
