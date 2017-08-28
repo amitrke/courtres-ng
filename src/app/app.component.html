@@ -5,6 +5,10 @@
   </h1>
   <app-hello-db></app-hello-db>
 
+  <div *ngIf="name | async as data; else loading">
+    {{data}}
+  </div>
+  <ng-template #loading let-data>
     <google-signin
       [clientId]="myClientId"
       [width]="myWidth"
@@ -13,4 +17,7 @@
       [longTitle]="myLongTitle"
       (googleSignInSuccess)="onGoogleSignInSuccess($event)">
     </google-signin>
+  </ng-template>
+  
+    
 </div>

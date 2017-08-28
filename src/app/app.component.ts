@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { GoogleSignInSuccess } from 'angular-google-signin';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/delay';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +12,10 @@ import { GoogleSignInSuccess } from 'angular-google-signin';
 })
 
 export class AppComponent {
-  title = 'app';
+  public title = 'app';
 
   private myClientId = '577808984615-h6fgitnl31qu5fsoej8p6sbt51a3vb6j.apps.googleusercontent.com';
-  name = '';
+  public name: Observable<string>;
 
   onGoogleSignInSuccess(event: GoogleSignInSuccess) {
     let googleUser: gapi.auth2.GoogleUser = event.googleUser;
@@ -20,7 +24,7 @@ export class AppComponent {
     console.log('ID: ' +
       profile
         .getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    this.title = profile.getName();
+    this.name = Observable.of(profile.getName()).share();
+    console.log('Name: ' + this.name);
   }
 }
