@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { HelloDBService } from '../hello-db.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { HelloDb, DbDes } from '../hello-db';
@@ -11,15 +11,16 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './hello-db.component.html',
   styleUrls: ['./hello-db.component.css']
 })
-export class HelloDBComponent implements OnInit {
+export class HelloDBComponent implements OnChanges {
   public dataObservable: Observable<HelloDb>;
+  @Input() user: string;
 
   constructor(
     private service: HelloDBService,
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    this.dataObservable = this.service.getData();
+  ngOnChanges() {
+    this.dataObservable = this.service.getData(this.user);
   }
 }

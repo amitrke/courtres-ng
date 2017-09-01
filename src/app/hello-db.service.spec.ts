@@ -48,7 +48,7 @@ describe('HelloDBService', () => {
 
   it('should return data', inject([HelloDBService], (service: HelloDBService) => {
     backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
-    service.getData().do(data => {
+    service.getData('abc').do(data => {
       console.dir(data);
       expect(data.Item.description).toEqual('DB Hello World',
           'should be DB Hello World');

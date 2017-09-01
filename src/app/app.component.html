@@ -3,10 +3,10 @@
   <h1>
     Welcome to {{title}}!
   </h1>
-  <app-hello-db></app-hello-db>
 
   <div *ngIf="name | async as data; else loading">
-    {{data}}
+    {{data.name}}
+    <app-hello-db [user]=data.id></app-hello-db>
   </div>
   <ng-template #loading let-data>
     <google-signin
