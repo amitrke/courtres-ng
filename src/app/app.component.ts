@@ -15,12 +15,15 @@ export class AppComponent {
   public title = 'app';
 
   private myClientId = '577808984615-h6fgitnl31qu5fsoej8p6sbt51a3vb6j.apps.googleusercontent.com';
-  public name: Observable<any>;
+  public name: Observable<string>;
 
   onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-    const googleUser: gapi.auth2.GoogleUser = event.googleUser;
-    const id: string = googleUser.getId();
-    const profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-    this.name = Observable.of(profile).share();
+    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
+    let id: string = googleUser.getId();
+    let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
+    console.log('ID: ' +
+      profile
+        .getId()); // Do not send to your backend! Use an ID token instead.
+    this.name = Observable.of(profile.getName()).share();
   }
 }

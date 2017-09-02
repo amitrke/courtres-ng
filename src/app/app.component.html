@@ -5,10 +5,11 @@
   </h1>
 
   <div *ngIf="name | async as data; else loading">
-    {{data.name}}
-    <app-hello-db [user]=data.id></app-hello-db>
+    {{data}}
+
+     
   </div>
-  <ng-template #loading let-data>
+  <ng-template #loading>
     <google-signin
       [clientId]="myClientId"
       [width]="myWidth"
@@ -19,5 +20,5 @@
     </google-signin>
   </ng-template>
   
-    
+    <app-hello-db user="abcde"></app-hello-db>
 </div>

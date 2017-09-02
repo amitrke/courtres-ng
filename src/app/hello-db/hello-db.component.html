@@ -1,6 +1,5 @@
-
-  <div *ngIf="dataObservable | async as data; else loading">
+{{user}}  
+<div *ngIf="dataObservable | async as data; else loading">
     {{data.Item.description}}
   </div>
   <ng-template #loading let-data>Invoking lambda...</ng-template>
-  
