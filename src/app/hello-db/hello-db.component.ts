@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { HelloDBService } from '../hello-db.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { HelloDb, DbDes } from '../hello-db';
@@ -19,10 +19,6 @@ export class HelloDBComponent implements OnChanges {
     private service: HelloDBService,
     private route: ActivatedRoute
   ) { }
-
-  ngOnInit() {
-    console.log(this.user);
-  }
 
   ngOnChanges() {
     console.log(this.user);

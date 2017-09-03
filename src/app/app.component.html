@@ -5,9 +5,7 @@
   </h1>
 
   <div *ngIf="name | async as data; else loading">
-    {{data}}
-
-     
+    <app-hello-db user="{{data}}"></app-hello-db>
   </div>
   <ng-template #loading>
     <google-signin
@@ -19,6 +17,4 @@
       (googleSignInSuccess)="onGoogleSignInSuccess($event)">
     </google-signin>
   </ng-template>
-  
-    <app-hello-db user="abcde"></app-hello-db>
 </div>
