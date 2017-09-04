@@ -5,7 +5,7 @@
   </h1>
 
   <div *ngIf="name | async as data; else loading">
-    <app-hello-db user="{{data}}"></app-hello-db>
+    <app-hello-db [user]="profile"></app-hello-db>
   </div>
   <ng-template #loading>
     <google-signin

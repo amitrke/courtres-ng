@@ -1,10 +1,11 @@
-import { Component, OnChanges, Input } from '@angular/core';
-import { HelloDBService } from '../hello-db.service';
+import { Component, OnChanges, Input, ChangeDetectorRef } from '@angular/core';
+import { UserService } from '../shared/user-service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { HelloDb, DbDes } from '../hello-db';
+import { UserQuery } from '../shared/user';
 
 // Observable operators
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-hello-db',
@@ -12,16 +13,18 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./hello-db.component.css']
 })
 export class HelloDBComponent implements OnChanges {
-  public dataObservable: Observable<HelloDb>;
-  @Input() user: string;
+  public dataObservable: Observable<UserQuery>;
+  public dbuser: UserQuery;
+  @Input() user: gapi.auth2.BasicProfile;
 
   constructor(
-    private service: HelloDBService,
-    private route: ActivatedRoute
+    private service: UserService,
+    private route: ActivatedRoute,
+    private changeDetectRef: ChangeDetectorRef
   ) { }
 
   ngOnChanges() {
-    console.log(this.user);
-    this.dataObservable = this.service.getData(this.user);
+    this.dataObservable = this.service.getUser(this.user.getId())
+            .do(x => {this.dbuser = x; this.changeDetectRef.detectChanges(); });
   }
 }

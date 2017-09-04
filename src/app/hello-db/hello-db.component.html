@@ -1,5 +1,5 @@
-{{user}}  
+{{dbuser?.Items[0].name}}
 <div *ngIf="dataObservable | async as data; else loading">
-    {{data.Item.description}}
-  </div>
-  <ng-template #loading let-data>Invoking lambda...</ng-template>
+  {{data.Items[0].name}}
+</div>
+<ng-template #loading>Invoking lambda...</ng-template>

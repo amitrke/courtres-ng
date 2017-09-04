@@ -16,22 +16,18 @@ export class AppComponent {
 
   private myClientId = '577808984615-h6fgitnl31qu5fsoej8p6sbt51a3vb6j.apps.googleusercontent.com';
   public name: Observable<string>;
-  public name1: string;
-  private changeDetectRef:ChangeDetectorRef;
+  public profile: gapi.auth2.BasicProfile;
+  private changeDetectRef: ChangeDetectorRef;
 
   constructor(private ref: ChangeDetectorRef) {
     this.changeDetectRef = ref;
   }
 
   onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
-    let id: string = googleUser.getId();
-    let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-    this.name1 = profile.getName();
-    console.log('ID: ' +
-      profile
-        .getId()); // Do not send to your backend! Use an ID token instead.
-    this.name = Observable.of(profile.getName()).share();
+    const googleUser: gapi.auth2.GoogleUser = event.googleUser;
+    const id: string = googleUser.getId();
+    this.profile = googleUser.getBasicProfile();
+    this.name = Observable.of(this.profile.getName()).share();
     this.changeDetectRef.detectChanges();
   }
 }

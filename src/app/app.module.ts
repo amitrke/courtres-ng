@@ -6,7 +6,7 @@ import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { AppComponent } from './app.component';
 import { HelloDBComponent } from './hello-db/hello-db.component';
-import { HelloDBService } from './hello-db.service';
+import { UserService } from './shared/user-service';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { HelloDBService } from './hello-db.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [HelloDBService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
