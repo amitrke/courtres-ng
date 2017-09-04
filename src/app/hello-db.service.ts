@@ -11,9 +11,9 @@ export class HelloDBService {
 
   constructor(private http: Http) { }
 
-  getData(user: gapi.auth2.BasicProfile): Observable<HelloDb> {
+  getData(user: string): Observable<HelloDb> {
     const requestOptions: RequestOptionsArgs = {
-        params: {'TableName': 'courtres_users', 'id': user.getId()}
+        params: {'TableName': 'courtres_users', 'id': user}
       };
     return this.http.get(this.dataUrl, requestOptions)
             .map(res => res.json());
