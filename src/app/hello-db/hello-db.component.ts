@@ -27,4 +27,8 @@ export class HelloDBComponent implements OnChanges {
     this.dataObservable = this.service.getUser(this.user.getId())
             .do(x => {this.dbuser = x; this.changeDetectRef.detectChanges(); });
   }
+
+  onClick() {
+      console.log('Logging in user');
+  }
 }
