@@ -1,6 +1,2 @@
-{{dbuser?.Items[0].name}}
-<div *ngIf="dataObservable | async as data; else loading">
-  {{data.Items[0].name}}
-</div>
-<ng-template #loading>Invoking lambda...</ng-template>
+{{ dbuser?.Items[0].name }}
 <button (click)="onClick()">Continue</button>

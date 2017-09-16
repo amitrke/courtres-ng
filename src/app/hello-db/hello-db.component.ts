@@ -13,7 +13,6 @@ import 'rxjs/add/operator/do';
   styleUrls: ['./hello-db.component.css']
 })
 export class HelloDBComponent implements OnChanges {
-  public dataObservable: Observable<UserQuery>;
   public dbuser: UserQuery;
   @Input() user: gapi.auth2.BasicProfile;
 
@@ -24,8 +23,12 @@ export class HelloDBComponent implements OnChanges {
   ) { }
 
   ngOnChanges() {
-    this.dataObservable = this.service.getUser(this.user.getId())
-            .do(x => {this.dbuser = x; this.changeDetectRef.detectChanges(); });
+    this.service.getUser(this.user.getId())
+      .then(res => {
+        this.dbuser = res;
+        this.changeDetectRef.detectChanges();
+        console.dir(res);
+      });
   }
 
   onClick() {

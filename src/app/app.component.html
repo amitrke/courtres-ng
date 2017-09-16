@@ -1,20 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
+    <h1>
+        Welcome to {{title}}!
+    </h1>
 
-  <div *ngIf="name | async as data; else loading">
-    <app-hello-db [user]="profile"></app-hello-db>
-  </div>
-  <ng-template #loading>
-    <google-signin
-      [clientId]="myClientId"
-      [width]="myWidth"
-      [theme]="myTheme"
-      [scope]="myScope"
-      [longTitle]="myLongTitle"
-      (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+    <div *ngIf="name | async as data; else loading">
+        <app-hello-db [user]="profile"></app-hello-db>
+    </div>
+    <ng-template #loading>
+
+    </ng-template>
+
+    <google-signin [clientId]="myClientId" [width]="myWidth" [theme]="myTheme" [scope]="myScope" [longTitle]="myLongTitle" (googleSignInSuccess)="onGoogleSignInSuccess($event)">
     </google-signin>
-  </ng-template>
 </div>
