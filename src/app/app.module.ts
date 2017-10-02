@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { HelloDBComponent } from './hello-db/hello-db.component';
 import { UserService } from './shared/user-service';
 import { LoginComponent } from './login/login.component';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MdMenuModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {MdButtonModule, MdCheckboxModule} from '@angular/material';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    MdButtonModule, MdCheckboxModule
+    MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
