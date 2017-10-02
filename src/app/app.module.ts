@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 import { HelloDBComponent } from './hello-db/hello-db.component';
 import { UserService } from './shared/user-service';
 import { LoginComponent } from './login/login.component';
-import {MdButtonModule, MdCheckboxModule, MdMenuModule} from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -17,13 +18,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppComponent,
     GoogleSignInComponent,
     HelloDBComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule
+    MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule, MatMenuModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

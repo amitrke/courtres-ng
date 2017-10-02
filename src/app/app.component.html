@@ -1,12 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-    <md-menu #appMenu="mdMenu">
-        <button md-menu-item> Settings </button>
-        <button md-menu-item> Help </button>
-    </md-menu>
-    <h1>
-        Welcome to {{title}}!
-    </h1>
 
     <div *ngIf="name | async as data; else loading">
         <app-hello-db [user]="profile"></app-hello-db>
