@@ -6,7 +6,7 @@ import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { AppComponent } from './app.component';
 import { HelloDBComponent } from './hello-db/hello-db.component';
-import { UserService } from './shared/user-service';
+import { BaseService } from './shared/base-service';
 import { LoginComponent } from './login/login.component';
 import {MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule, MatMenuModule
   ],
-  providers: [UserService],
+  providers: [BaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
