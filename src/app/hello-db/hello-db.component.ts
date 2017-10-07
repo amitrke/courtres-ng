@@ -19,7 +19,8 @@ export class HelloDBComponent implements OnChanges {
   ) {}
 
   ngOnChanges() {
-    this.service.get(this.user.getId())
+    const user: User = new User(this.user.getId(), '', '');
+    this.service.get(user)
       .then(res => {
         this.dbuser = res;
         this.changeDetectRef.detectChanges();
