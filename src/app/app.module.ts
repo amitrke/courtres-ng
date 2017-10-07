@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { HelloDBComponent } from './hello-db/hello-db.component';
 import { BaseService } from './shared/base-service';
 import { LoginComponent } from './login/login.component';
-import {MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule, MdToolbarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 
 
@@ -25,7 +25,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule, MatMenuModule
+    MdButtonModule, MdCheckboxModule, BrowserAnimationsModule, MdMenuModule, MatMenuModule, MdToolbarModule
   ],
   providers: [BaseService],
   bootstrap: [AppComponent]
