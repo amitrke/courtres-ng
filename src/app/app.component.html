@@ -6,14 +6,14 @@
         </google-signin>
     </md-icon>
 </md-toolbar>
+
 <div style="text-align:center">
 
     <div *ngIf="name | async as data; else loading">
         <app-hello-db [user]="profile"></app-hello-db>
     </div>
     <ng-template #loading>
-
+        Please login using your Google account to continue.
     </ng-template>
-
 
 </div>
