@@ -2,18 +2,17 @@
     <span>Court Reservation</span>
     <span class="example-spacer"></span>
     <md-icon class="example-icon">
-        <google-signin [clientId]="myClientId" [width]="myWidth" [theme]="myTheme" [scope]="myScope" [longTitle]="myLongTitle" (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-        </google-signin>
+        <div *ngIf="name | async as data; else showGoogleSignin">
+            <app-login [user]="profile"></app-login>
+        </div>
+        <ng-template #showGoogleSignin>
+            <google-signin [clientId]="myClientId" [width]="myWidth" [theme]="myTheme" [scope]="myScope" [longTitle]="myLongTitle" (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+            </google-signin>
+        </ng-template>
+
     </md-icon>
 </md-toolbar>
 
 <div style="text-align:center">
-
-    <div *ngIf="name | async as data; else loading">
-        <app-hello-db [user]="profile"></app-hello-db>
-    </div>
-    <ng-template #loading>
-        Please login using your Google account to continue.
-    </ng-template>
 
 </div>

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { AppComponent } from './app.component';
-import { HelloDBComponent } from './hello-db/hello-db.component';
 import { BaseService } from './shared/base-service';
 import { LoginComponent } from './login/login.component';
 import { MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule, MdToolbarModule } from '@angular/material';
@@ -17,7 +16,6 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     GoogleSignInComponent,
-    HelloDBComponent,
     LoginComponent,
     HomeComponent
   ],
