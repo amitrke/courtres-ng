@@ -1,7 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { HelloDBComponent } from './hello-db/hello-db.component';
 /*
 describe('AppComponent', () => {
   beforeEach(async(() => {
