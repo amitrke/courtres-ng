@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { GoogleSignInSuccess } from 'angular-google-signin';
 import { Observable } from 'rxjs/Observable';
+import { User } from './shared/models';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/delay';
@@ -29,5 +30,9 @@ export class AppComponent {
     this.profile = googleUser.getBasicProfile();
     this.name = Observable.of(this.profile.getName()).share();
     this.changeDetectRef.detectChanges();
+  }
+
+  receiveLoginEvent($event) {
+    console.log('Recieved Login event');
   }
 }

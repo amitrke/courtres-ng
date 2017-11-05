@@ -1,3 +1,5 @@
+import { RequestOptionsArgs} from '@angular/http';
+
 export class BaseModel {
 
     public dateCreated: Date;
@@ -6,16 +8,27 @@ export class BaseModel {
     constructor(
         public id: string,
         public name: string,
-        public tableName: string
+        public TableName: string
     ) {}
 
+    public getCreateRequest(): BaseRequest {
+        return new BaseRequest(this, this.TableName);
+    }
 }
 
-export class BaseQuery<T extends BaseModel> {
+export class BaseDBResponse<T> {
     constructor (
+        public Item: T,
         public Items: T[],
         public count: number,
         public ScannedCount: number
+    ) {}
+}
+
+export class BaseRequest {
+    constructor(
+        public Item: BaseModel,
+        public TableName: string
     ) {}
 }
 
@@ -29,5 +42,10 @@ export class User extends BaseModel {
     public email: string;
     constructor (id: string, name: string, email: string) {
         super(id, name, 'courtres_users');
+    }
+    public importGoogleProfile(profile: gapi.auth2.BasicProfile) {
+        this.id = profile.getId();
+        this.email = profile.getEmail();
+        this.name = profile.getName();
     }
 }

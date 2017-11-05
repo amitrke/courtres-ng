@@ -1,5 +1,12 @@
-import { Component, OnInit, OnChanges, Input, ChangeDetectorRef } from '@angular/core';
-import { BaseQuery, User } from '../shared/models';
+import { Component,
+  OnInit,
+  OnChanges,
+  Input,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { BaseDBResponse, User } from '../shared/models';
 import { BaseService } from '../shared/base-service';
 
 @Component({
@@ -9,11 +16,12 @@ import { BaseService } from '../shared/base-service';
 })
 export class LoginComponent implements OnInit, OnChanges {
 
-  public dbuser: BaseQuery<User>;
+  public dbuser: User;
   @Input() user: gapi.auth2.BasicProfile;
+  @Output() loginEvent = new EventEmitter<String>();
 
   constructor(
-    private service: BaseService<BaseQuery<User>>,
+    private service: BaseService<BaseDBResponse<User>>,
     private changeDetectRef: ChangeDetectorRef
   ) {}
 
@@ -21,10 +29,15 @@ export class LoginComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    const user: User = new User(this.user.getId(), '', '');
-    this.service.get(user)
+    const newUserObj: User = new User(this.user.getId(), '', '');
+    this.service.get(newUserObj)
       .then(res => {
-        this.dbuser = res;
+        if (!res.Item) { // Register the new user.
+          newUserObj.importGoogleProfile(this.user);
+          this.service.create(newUserObj);
+        }
+        this.loginEvent.emit('res.Item');
+        this.dbuser = res.Item;
         this.changeDetectRef.detectChanges();
       });
   }
