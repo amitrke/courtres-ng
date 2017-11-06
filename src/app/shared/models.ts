@@ -1,6 +1,4 @@
-import { RequestOptionsArgs} from '@angular/http';
-
-export class BaseModel {
+export abstract class BaseModel {
 
     public dateCreated: Date;
     public dateModified: Date;
@@ -12,7 +10,9 @@ export class BaseModel {
     ) {}
 
     public getCreateRequest(): BaseRequest {
-        return new BaseRequest(this, this.TableName);
+        const clone: BaseModel = Object.assign({}, this);
+        delete clone.TableName;
+        return new BaseRequest(clone, this.TableName);
     }
 }
 
