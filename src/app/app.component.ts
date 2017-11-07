@@ -31,7 +31,7 @@ export class AppComponent {
     this.name = Observable.of(this.profile.getName()).share();
     this.changeDetectRef.detectChanges();
   }
-
+  
   receiveLoginEvent($event) {
     console.log('Recieved Login event');
   }
