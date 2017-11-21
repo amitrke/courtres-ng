@@ -3,6 +3,9 @@ import { GoogleSignInSuccess } from 'angular-google-signin';
 import { Observable } from 'rxjs/Observable';
 import { User } from './shared/models';
 import { NGXLogger } from 'ngx-logger';
+import { Store } from './shared/store';
+import { Router } from '@angular/router';
+
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/delay';
@@ -20,11 +23,13 @@ export class AppComponent {
   private myClientId = '577808984615-h6fgitnl31qu5fsoej8p6sbt51a3vb6j.apps.googleusercontent.com';
   public name: Observable<string>;
   public profile: gapi.auth2.BasicProfile;
-  private changeDetectRef: ChangeDetectorRef;
 
-  constructor(private ref: ChangeDetectorRef, private logger: NGXLogger) {
-    this.changeDetectRef = ref;
-  }
+  constructor(
+    private changeDetectRef: ChangeDetectorRef,
+    private logger: NGXLogger,
+    public store: Store,
+    private router: Router
+  ) { }
 
   onGoogleSignInSuccess(event: GoogleSignInSuccess) {
     const googleUser: gapi.auth2.GoogleUser = event.googleUser;
@@ -35,6 +40,7 @@ export class AppComponent {
   }
 
   receiveLoginEvent($event) {
-    this.logger.debug('Received Login event');
+    this.logger.debug('Received Login event' + JSON.stringify(this.store));
+    this.changeDetectRef.detectChanges();
   }
 }

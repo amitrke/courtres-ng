@@ -12,6 +12,6 @@
 
     </md-icon>
 </md-toolbar>
-<div *ngIf="name | async as data">
-    Member - Badminton NC
+<div *ngIf="store.user">
+    <app-facuser></app-facuser>
 </div>

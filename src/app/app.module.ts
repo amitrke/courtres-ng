@@ -12,13 +12,15 @@ import { MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule, MdToolba
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { FacuserComponent } from './facuser/facuser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoogleSignInComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FacuserComponent
   ],
   imports: [
     BrowserModule,

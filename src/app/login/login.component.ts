@@ -54,9 +54,9 @@ export class LoginComponent implements OnInit, OnChanges {
 
   pullUserInfo(res: BaseDBResponse<User>) {
     if (res.Item) {
-      this.loginEvent.emit('res.Item');
       this.dbuser = res.Item;
       this.store.user = res.Item;
+      this.loginEvent.emit('res.Item'); // Before I emit this I should also get the relationship from db.
       this.changeDetectRef.detectChanges();
     } else {
       this.logger.error('Invalid user data from database:' + res);
