@@ -8,6 +8,8 @@ import { Component,
 } from '@angular/core';
 import { BaseDBResponse, User } from '../shared/models';
 import { BaseService } from '../shared/base-service';
+import { Store } from '../shared/store';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-login',
@@ -22,24 +24,42 @@ export class LoginComponent implements OnInit, OnChanges {
 
   constructor(
     private service: BaseService<BaseDBResponse<User>>,
-    private changeDetectRef: ChangeDetectorRef
+    private changeDetectRef: ChangeDetectorRef,
+    private logger: NGXLogger,
+    private store: Store
   ) {}
 
   ngOnInit() {
   }
 
   ngOnChanges() {
-
+    this.logger.debug('login component ngOnChanges');
     const newUserObj: User = new User(this.user.getId(), '', '');
+    this.logger.debug('newUserObj:' + newUserObj);
     this.service.get(newUserObj)
       .then(res => {
         if (!res.Item) { // Register the new user.
+          this.logger.debug('User not found, creating a new one');
           newUserObj.importGoogleProfile(this.user);
-          this.service.create(newUserObj);
+          this.service.create(newUserObj).then(
+            r => {
+              this.pullUserInfo(r);
+            }
+          );
+        } else {
+          this.pullUserInfo(res);
         }
-        this.loginEvent.emit('res.Item');
-        this.dbuser = res.Item;
-        this.changeDetectRef.detectChanges();
       });
+  }
+
+  pullUserInfo(res: BaseDBResponse<User>) {
+    if (res.Item) {
+      this.loginEvent.emit('res.Item');
+      this.dbuser = res.Item;
+      this.store.user = res.Item;
+      this.changeDetectRef.detectChanges();
+    } else {
+      this.logger.error('Invalid user data from database:' + res);
+    }
   }
 }

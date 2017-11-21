@@ -6,6 +6,7 @@ import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { AppComponent } from './app.component';
 import { BaseService } from './shared/base-service';
+import { Store } from './shared/store';
 import { LoginComponent } from './login/login.component';
 import { MdButtonModule, MdCheckboxModule, MatMenuModule, MdMenuModule, MdToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +32,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     MdToolbarModule,
     LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF})
   ],
-  providers: [BaseService],
+  providers: [BaseService, Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
