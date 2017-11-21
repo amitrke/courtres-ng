@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+
     const newUserObj: User = new User(this.user.getId(), '', '');
     this.service.get(newUserObj)
       .then(res => {
