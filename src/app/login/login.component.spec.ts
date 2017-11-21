@@ -8,6 +8,8 @@ import {
 
 import { LoginComponent } from './login.component';
 import { BaseService } from '../shared/base-service';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { Store } from '../shared/store';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -26,7 +28,11 @@ describe('LoginComponent', () => {
                         (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
                             return new Http(backend, defaultOptions);
                         }
-                }]
+                },
+                Store],
+      imports: [
+        LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.OFF, serverLogLevel: NgxLoggerLevel.OFF})
+      ]
     })
     .compileComponents();
   }));
@@ -66,3 +72,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockNgxLogger {
+
+}
