@@ -21,7 +21,7 @@ export class AppComponent {
   public title = 'app';
 
   private myClientId = '577808984615-h6fgitnl31qu5fsoej8p6sbt51a3vb6j.apps.googleusercontent.com';
-  public name: Observable<string>;
+  public name: string;
   public profile: gapi.auth2.BasicProfile;
 
   constructor(
@@ -35,7 +35,7 @@ export class AppComponent {
     const googleUser: gapi.auth2.GoogleUser = event.googleUser;
     const id: string = googleUser.getId();
     this.profile = googleUser.getBasicProfile();
-    this.name = Observable.of(this.profile.getName()).share();
+    this.name = this.profile.getName();
     this.changeDetectRef.detectChanges();
   }
 
